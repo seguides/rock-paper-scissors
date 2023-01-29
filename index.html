@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            // Your JavaScript goes here!
+            // prompt user for input, then computer
+            // create function that takes the input
+            // make sure to take in case insensitive
+            // if statement - if user rock pc scissor user wins
+            // if user rock pc paper pc win
+            // if user paper pc scissor - pc win
+            // if user paper pc rock - user win
+            // if user scissor pc rock - pc win
+            // if user scissor pc paper - user win
+            // if user == pc - draw 
+            /*let playerSelection = prompt('Rock paper scissors?');
+            let computerSelection = prompt('Rock paper scissors?');*/
+            
+            function getComputerChoice(){
+                const choice = ["rock","paper","scissors"]
+                const random = Math.floor(Math.random() * choice.length);
+                return choice[random];
+            }
+
+            function playRound(playerSelection, computerSelection){
+                let player = playerSelection.toLowerCase(); 
+                let comp = computerSelection.toLowerCase();
+                if (player == "rock" && comp == "paper"){
+                    return ("computer wins");
+                } else if (player == "rock" && comp == "scissors"){
+                    return ("player wins");
+                } else if (player == "paper" && comp == "rock"){
+                    return ("player wins");
+                } else if (player == "paper" && comp == "scissors"){
+                    return ("computer wins");
+                } else if (player == "scissors" && comp == "rock"){
+                    return ("computer wins");
+                } else if (player == "scissors" && comp == "paper"){
+                    return ("player wins");
+                } else if (player == comp){
+                    return ("draw")
+                }
+            }
+            
+            function game(){
+            
+                let userCount = 0
+                let pcCount = 0;
+                let tally;
+                 
+                for (let i = 0; i < 5; i++){
+                    let user = prompt('Rock paper scissors?');
+                    let comp = getComputerChoice();
+                    tally = playRound(user, comp);
+                    if (tally == "player wins"){
+                        console.log(tally);
+                        userCount++;
+                    } else if (tally == "computer wins"){
+                        console.log(tally);
+                        pcCount++;
+                    }
+                }
+                console.log(userCount);
+                console.log(pcCount);
+                if (userCount > pcCount){
+                    return console.log(`player wins round ${userCount} to ${pcCount}`);
+                } else if (pcCount > userCount){
+                    return console.log(`pc wins round ${pcCount} to ${userCount}`);
+                } else {
+                    return console.log("draw");
+                }
+
+            }
+            game();
+        </script>
+</body>
+</html>
